@@ -3,3 +3,6 @@
 ################################################################################
 
 /CoffeShop/.vs/CoffeShop/v16
+/CoffeShop/Domain/obj
+/CoffeShop/Application/obj
+/CoffeShop/Framework/obj
