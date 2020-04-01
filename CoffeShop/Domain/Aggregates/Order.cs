@@ -24,6 +24,11 @@ namespace Domain
             );
         }
 
+        public void AddCoffeToGoOrder(CoffeToGo coffeToGo)
+        {
+            Apply(new CoffeToGoOrdered(coffeToGo));
+        }
+
         protected override void EnsureValidState()
         {
             throw new NotImplementedException();
@@ -40,6 +45,7 @@ namespace Domain
                 case CoffeToDrinkOrdered e:
                     break;
                 case CoffeToGoOrdered e:
+                    CoffeToGo.Add(e.CoffeToGo);
                     break;
                 case KichenReceivedDrinkOrder e:
                     break;

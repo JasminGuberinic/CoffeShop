@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Domain.Events
+namespace Application.Dto
 {
-    class OrderToDrinkDone
+    class CoffeToDrink
     {
     }
 }

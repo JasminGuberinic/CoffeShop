@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Domain.Entitys
 {
-    enum CoffeToGoPackaging
+    public enum CoffeToGoPackaging
     {
         Empty = 0,
         SmallCardboardCup  = 1, 

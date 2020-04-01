@@ -4,7 +4,13 @@ using System.Text;
 
 namespace Domain.Events
 {
-    class CoffeToGoOrdered
+    public class CoffeToGoOrdered
     {
+        public CoffeToGo CoffeToGo { get; set; }
+
+        public CoffeToGoOrdered(CoffeToGo coffeToGo)
+        {
+            CoffeToGo = coffeToGo;
+        }
     }
 }

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Domain.Events
+namespace Application.Command
 {
-    class OrderToGoDone
+    public class ToGoOrderDoneCommand
     {
     }
 }
