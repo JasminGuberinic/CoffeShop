@@ -7,9 +7,9 @@ using Domain.Value;
 
 namespace Application.Command
 {
-    public class AddCoffeToGoCommand
+    public class AddCoffeAtHomeCommand
     {
         public Guid Id { get; set; }
-        public CoffeToGo CoffeToGo { get; set; }
+        public CoffeAtHome CoffeToGo { get; set; }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Application.Command
 {
-    public class ToGoOrderDoneCommand
+    public class CoffeAtHomeOrderDoneCommand
     {
     }
 }

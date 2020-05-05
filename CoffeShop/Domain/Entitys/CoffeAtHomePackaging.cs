@@ -4,11 +4,11 @@ using System.Text;
 
 namespace Domain.Entitys
 {
-    public enum CoffeToGoPackaging
+    public enum CoffeAtHomePackaging
     {
         Empty = 0,
-        SmallCardboardCup  = 1, 
-        MediumCardboardCup = 2,
-        BigCardboardCup = 3
+        Small100g  = 1, 
+        Medium250g = 2,
+        Big500g = 3
     }
 }

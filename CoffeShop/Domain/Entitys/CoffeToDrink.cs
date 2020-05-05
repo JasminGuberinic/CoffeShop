@@ -10,6 +10,7 @@ namespace Domain
     public class CoffeToDrink : Entity<CoffeToDrinkId>
     {
         CoffeToDrinkId Id { get; set; }
+        bool ToGo { get; set; }
         CoffeToDrinkServing serving { get; set; }
         bool cake { get; set; }
         Coffe coffe { get; set; }

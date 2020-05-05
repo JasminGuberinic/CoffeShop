@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Domain.Events
 {
-    class KichenReceivedToGoOrder
+    class CoffeAtHomeDone
     {
     }
 }

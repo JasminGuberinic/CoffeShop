@@ -9,7 +9,7 @@ namespace Domain
     {
         List<CoffeToDrink> CoffeToDrink { get; set; }
 
-        List<CoffeToGo> CoffeToGo { get; set; }
+        List<CoffeAtHome> CoffeAtHome { get; set; }
 
         bool IsOpen { get; set; }
 
@@ -24,9 +24,9 @@ namespace Domain
             );
         }
 
-        public void AddCoffeToGoOrder(CoffeToGo coffeToGo)
+        public void AddCoffeToGoOrder(CoffeAtHome coffeToGo)
         {
-            Apply(new CoffeToGoOrdered(coffeToGo));
+            Apply(new CoffeAtHomeOrdered(coffeToGo));
         }
 
         protected override void EnsureValidState()
@@ -44,17 +44,17 @@ namespace Domain
                     break;
                 case CoffeToDrinkOrdered e:
                     break;
-                case CoffeToGoOrdered e:
-                    CoffeToGo.Add(e.CoffeToGo);
+                case CoffeAtHomeOrdered e:
+                    CoffeAtHome.Add(e.CoffeAtHome);
                     break;
                 case KichenReceivedDrinkOrder e:
                     break;
-                case KichenReceivedToGoOrder e:
+                case ReceivedCoffeAtHomeOrder e:
 
                     break;
                 case KichenDrinkOrderDone e:
                     break;
-                case KichenToGoOrderDone e:
+                case CoffeAtHomeDone e:
 
                     break;
             }

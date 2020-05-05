@@ -21,14 +21,14 @@ namespace Application
                 _ = HandleCommand((AddCoffeToDrinkCommand)command);
             }
 
-            if (command is AddCoffeToGoCommand)
+            if (command is AddCoffeAtHomeCommand)
             {
-               HandleCommand((AddCoffeToGoCommand)command);
+               HandleCommand((AddCoffeAtHomeCommand)command);
             }
 
-            if (command is KichenReceiveToGoOrderCommand)
+            if (command is ReceiveCoffeAtHomeCommand)
             {
-                _ = HandleCommand((KichenReceiveToGoOrderCommand)command);
+                _ = HandleCommand((ReceiveCoffeAtHomeCommand)command);
             }
 
             if (command is KichenReceiveDrinkOrderCommand)
@@ -41,13 +41,13 @@ namespace Application
                 _ = HandleCommand((OrderToDrinkDoneCommand)command);
             }
 
-            if (command is ToGoOrderDoneCommand)
+            if (command is CoffeAtHomeOrderDoneCommand)
             {
-                _ = HandleCommand((ToGoOrderDoneCommand)command);
+                _ = HandleCommand((CoffeAtHomeOrderDoneCommand)command);
             }
         }
 
-        private object HandleCommand(ToGoOrderDoneCommand command)
+        private object HandleCommand(CoffeAtHomeOrderDoneCommand command)
         {
             throw new NotImplementedException();
         }
@@ -62,12 +62,12 @@ namespace Application
             throw new NotImplementedException();
         }
 
-        private object HandleCommand(KichenReceiveToGoOrderCommand command)
+        private object HandleCommand(ReceiveCoffeAtHomeCommand command)
         {
             throw new NotImplementedException();
         }
 
-        private void HandleCommand(AddCoffeToGoCommand command)
+        private void HandleCommand(AddCoffeAtHomeCommand command)
         {
             var oreder = moqRepo.getOrder(command.Id);
             oreder.AddCoffeToGoOrder(command.CoffeToGo);

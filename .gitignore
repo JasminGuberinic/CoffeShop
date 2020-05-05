@@ -6,3 +6,6 @@
 /CoffeShop/Domain/obj
 /CoffeShop/Application/obj
 /CoffeShop/Framework/obj
+/CoffeShop/Application/bin/Debug/netcoreapp3.1
+/CoffeShop/Domain/bin/Debug/netcoreapp3.1
+/CoffeShop/Framework/bin/Debug/netcoreapp3.1

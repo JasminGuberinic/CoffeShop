@@ -7,17 +7,17 @@ using System.Text;
 
 namespace Domain
 {
-    public class CoffeToGo : Entity<CoffeToGoId>
+    public class CoffeAtHome : Entity<CoffeAtHomeId>
     {
-        CoffeToGoId Id { get; set; }
-        CoffeToGoPackaging packagin { get; set; }
+        CoffeAtHomeId Id { get; set; }
+        CoffeAtHomePackaging packagin { get; set; }
         Coffe coffe { get; set; }
         Price price { get; set; }
     }
 
-    public class CoffeToGoId : Value<CoffeToGoId>
+    public class CoffeAtHomeId : Value<CoffeAtHomeId>
     {
-        public CoffeToGoId(Guid value) => Value = value;
+        public CoffeAtHomeId(Guid value) => Value = value;
 
         public Guid Value { get; }
 
