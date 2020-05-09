@@ -10,7 +10,8 @@
 /CoffeShop/Domain/bin/Debug/netcoreapp3.1
 /CoffeShop/Framework/bin/Debug/netcoreapp3.1
 /CoffeShop/.vs/CoffeShop/DesignTimeBuild
-/CoffeShop/infrastructure
 /CoffeShop/CoffeShopTests/obj
 /CoffeShop/WebAPI/bin/Debug
 /CoffeShop/WebAPI/obj
+/CoffeShop/infrastructure/bin/Debug/netcoreapp3.1
+/CoffeShop/infrastructure/obj
