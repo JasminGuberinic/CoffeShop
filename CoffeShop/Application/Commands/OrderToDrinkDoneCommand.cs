@@ -6,5 +6,7 @@ namespace Application.Command
 {
     public class OrderToDrinkDoneCommand
     {
+        public Guid OrderId { get; set; }
+        public Guid Id { get; set; }
     }
 }

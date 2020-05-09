@@ -6,6 +6,6 @@ namespace Framework
 {
     public interface IEvent
     {
-        string Id { get; set; }
+        Guid Id { get; set; }
     }
 }

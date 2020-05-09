@@ -12,18 +12,18 @@ namespace Framework
 
         protected abstract void When(object @event);
 
-        private readonly List<object> _changes;
+        private readonly List<DomainEvent> _changes;
 
-        protected AggregateRoot() => _changes = new List<object>();
+        protected AggregateRoot() => _changes = new List<DomainEvent>();
 
-        protected void Apply(object @event)
+        protected void Apply(DomainEvent @event)
         {
             When(@event);
             EnsureValidState();
             _changes.Add(@event);
         }
 
-        public IEnumerable<object> GetChanges() => _changes.AsEnumerable();
+        public IEnumerable<DomainEvent> GetChanges() => _changes.AsEnumerable();
 
         public void ClearChanges() => _changes.Clear();
 

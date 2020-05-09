@@ -1,10 +1,17 @@
-﻿using System;
+﻿using Framework;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Domain.Events
 {
-    class CoffeToDrinkOrdered
+    public class CoffeToDrinkOrdered : DomainEvent
     {
+        public CoffeToDrink coffeToDrink;
+
+        public CoffeToDrinkOrdered(CoffeToDrink coffeToDrink)
+        {
+            this.coffeToDrink = coffeToDrink;
+        }
     }
 }

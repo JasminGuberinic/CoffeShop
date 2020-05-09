@@ -6,6 +6,7 @@ namespace Application.Command
 {
     public class CreateOrderCommand
     {
+        public Guid OrderId { get; set; }
         public Guid Id { get; set; }
         public bool IsOpen { get; set; }
     }

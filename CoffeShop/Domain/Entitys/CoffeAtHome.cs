@@ -13,6 +13,7 @@ namespace Domain
         CoffeAtHomePackaging packagin { get; set; }
         Coffe coffe { get; set; }
         Price price { get; set; }
+        public AcquiringStateAtHomeCoffe AcquiringStateAtHomeCoffe { get; set;}
     }
 
     public class CoffeAtHomeId : Value<CoffeAtHomeId>

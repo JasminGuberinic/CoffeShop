@@ -1,6 +1,7 @@
 ﻿using Application.Command;
 using Application.Dto;
 using Domain;
+using infrastructure;
 using System;
 using System.Threading.Tasks;
 
@@ -8,17 +9,23 @@ namespace Application
 {
     public class OrderCommandService
     {
-        MoqRepo moqRepo = new MoqRepo();
+        OrderRepository orederRepo;
+
+        public OrderCommandService () 
+        {
+            orederRepo = new OrderRepository();
+        }
+
         public async Task Handle(object command)
         {
             if (command is CreateOrderCommand)
             {
-                _ = HandleCreate((CreateOrderCommand)command);
+                var order = await HandleCreate((CreateOrderCommand)command);
             }
 
             if (command is AddCoffeToDrinkCommand)
             {
-                _ = HandleCommand((AddCoffeToDrinkCommand)command);
+               HandleCommand((AddCoffeToDrinkCommand)command);
             }
 
             if (command is AddCoffeAtHomeCommand)
@@ -26,64 +33,77 @@ namespace Application
                HandleCommand((AddCoffeAtHomeCommand)command);
             }
 
-            if (command is ReceiveCoffeAtHomeCommand)
+            if (command is StockReceiveCoffeAtHomeCommand)
             {
-                _ = HandleCommand((ReceiveCoffeAtHomeCommand)command);
+                HandleCommand((StockReceiveCoffeAtHomeCommand)command);
             }
 
             if (command is KichenReceiveDrinkOrderCommand)
             {
-                _ = HandleCommand((KichenReceiveDrinkOrderCommand)command);
+                HandleCommand((KichenReceiveDrinkOrderCommand)command);
             }
 
             if (command is OrderToDrinkDoneCommand)
             {
-                _ = HandleCommand((OrderToDrinkDoneCommand)command);
+                HandleCommand((OrderToDrinkDoneCommand)command);
             }
 
             if (command is CoffeAtHomeOrderDoneCommand)
             {
-                _ = HandleCommand((CoffeAtHomeOrderDoneCommand)command);
+                HandleCommand((CoffeAtHomeOrderDoneCommand)command);
             }
         }
 
-        private object HandleCommand(CoffeAtHomeOrderDoneCommand command)
+        private async Task HandleCommand(CoffeAtHomeOrderDoneCommand command)
         {
-            throw new NotImplementedException();
+            var oreder = orederRepo.LoadAsync(command.OrderId.ToString());
+            oreder.CoffeAtHomeDone(command.Id);
+            await orederRepo.SaveAsync(oreder);
         }
 
-        private object HandleCommand(OrderToDrinkDoneCommand command)
+        private async Task HandleCommand(OrderToDrinkDoneCommand command)
         {
-            throw new NotImplementedException();
+            var oreder = orederRepo.LoadAsync(command.OrderId.ToString());
+            oreder.OrderToDrinkDone(command.Id);
+            await orederRepo.SaveAsync(oreder);
         }
 
-        private object HandleCommand(KichenReceiveDrinkOrderCommand command)
+        private async Task HandleCommand(KichenReceiveDrinkOrderCommand command)
         {
-            throw new NotImplementedException();
+            var oreder = orederRepo.LoadAsync(command.OrderId.ToString());
+            oreder.KichenReceiveDrinkOrder(command.Id);
+            await orederRepo.SaveAsync(oreder);
         }
 
-        private object HandleCommand(ReceiveCoffeAtHomeCommand command)
+        private async Task HandleCommand(StockReceiveCoffeAtHomeCommand command)
         {
-            throw new NotImplementedException();
+            var oreder = orederRepo.LoadAsync(command.OrderId.ToString());
+            oreder.SetStockReceivedCoffeAtHome(command.Id);
+            await orederRepo.SaveAsync(oreder);
         }
 
-        private void HandleCommand(AddCoffeAtHomeCommand command)
+        private async Task HandleCommand(AddCoffeAtHomeCommand command)
         {
-            var oreder = moqRepo.getOrder(command.Id);
-            oreder.AddCoffeToGoOrder(command.CoffeToGo);
+            var oreder = orederRepo.LoadAsync(command.Id.ToString());
+            oreder.AddCoffeAtHomeOrder(command.CoffeToGo);
+            await orederRepo.SaveAsync(oreder);
         }
 
-        private object HandleCommand(AddCoffeToDrinkCommand command)
+        private async Task HandleCommand(AddCoffeToDrinkCommand command)
         {
-            throw new NotImplementedException();
+            var oreder = orederRepo.LoadAsync(command.Id.ToString());
+            oreder.AddCoffeToDrinkOrder(command.CoffeToDrink);
+            await orederRepo.SaveAsync(oreder);
         }
 
-        private async Task HandleCreate(CreateOrderCommand cmd)
+        private async Task<Order> HandleCreate(CreateOrderCommand cmd)
         {
-            var classifiedAd = new Order(
+            var oreder = new Order(
                 cmd.Id,
                 cmd.IsOpen
             );
+            await orederRepo.SaveAsync(oreder);
+            return oreder;
         }
     }
 }

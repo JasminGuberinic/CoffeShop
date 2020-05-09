@@ -5,10 +5,10 @@ using System.Text;
 
 namespace Domain.Events
 {
-    public class KichenReceivedDrinkOrder : DomainEvent
+    public class DrinkOrderDone : DomainEvent
     {
         public Guid CoffeId { get; set; }
-        public KichenReceivedDrinkOrder(Guid id)
+        public DrinkOrderDone(Guid id)
         {
             CoffeId = id;
         }

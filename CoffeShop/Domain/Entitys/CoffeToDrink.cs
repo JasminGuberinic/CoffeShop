@@ -15,6 +15,7 @@ namespace Domain
         bool cake { get; set; }
         Coffe coffe { get; set; }
         Price price { get; set; }
+        public AcquiringToDrinkCoffe AcquiringToDrinkCoffe { get; set; }
     }
 
     public class CoffeToDrinkId : Value<CoffeToDrinkId>

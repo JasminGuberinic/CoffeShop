@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Framework;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Domain.Events
 {
-    public class CoffeAtHomeOrdered
+    public class CoffeAtHomeOrdered : DomainEvent
     {
         public CoffeAtHome CoffeAtHome { get; set; }
 
