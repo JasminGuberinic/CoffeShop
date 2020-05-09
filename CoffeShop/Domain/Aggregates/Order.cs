@@ -25,12 +25,12 @@ namespace Domain
             );
         }
 
-        public Order(IEnumerable<DomainEvent> domainevents)
+        public Order(IEnumerable<object> domainevents)
         {
             Mutate(domainevents);
         }
 
-        private void Mutate(IEnumerable<DomainEvent> domainevents)
+        private void Mutate(IEnumerable<object> domainevents)
         {
             foreach (var devent in domainevents)
             {

@@ -28,9 +28,9 @@ namespace infrastructure
             await eventStore.SaveEvents(domainEvents, version, aggregateID, aggregateName);
         }
 
-        private DomainEvent Transform(CommitedEvent commitedEvent)
+        private object Transform(CommitedEvent commitedEvent)
         {
-            var e = JsonConvert.DeserializeObject<DomainEvent>(commitedEvent.MetaData);
+            var e = JsonConvert.DeserializeObject<object>(commitedEvent.MetaData);
             return e;
         }
     }
