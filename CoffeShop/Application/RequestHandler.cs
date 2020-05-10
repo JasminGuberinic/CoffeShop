@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Serilog;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,7 +19,7 @@ namespace Application
             }
             catch (Exception e)
             {
-                log.Debug("Handling HTTP request of type {type}", typeof(T).Name);
+                log.LogDebug("Handling HTTP request of type {type}", typeof(T).Name);
                 return new BadRequestObjectResult(new
                 {
                     error = e.Message,
@@ -37,7 +37,7 @@ namespace Application
             }
             catch (Exception e)
             {
-                log.Error(e, "Error handling the query");
+                log.LogError(e, "Error handling the query");
                 return new BadRequestObjectResult(new
                 {
                     error = e.Message,

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Application;
+using Application.Command;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -11,22 +13,17 @@ namespace WebAPI.Controllers
     [Route("[controller]")]
     public class OrderController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         private readonly ILogger<OrderController> _logger;
+        private OrderCommandService _orderCommandService;
 
         public OrderController(ILogger<OrderController> logger)
         {
             _logger = logger;
+            _orderCommandService = new OrderCommandService();
         }
 
-        [HttpGet]
-        public IEnumerable<object> Get()
-        {
-            return null;
-        }
+        [HttpPost]
+        public Task<IActionResult> Post(CreateOrderCommand request)
+                    => RequestHandler.HandleCommand(request, _orderCommandService.Handle, _logger);
     }
 }
