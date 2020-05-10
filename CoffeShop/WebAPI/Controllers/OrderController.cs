@@ -22,8 +22,39 @@ namespace WebAPI.Controllers
             _orderCommandService = new OrderCommandService();
         }
 
+        [Route("order")]
         [HttpPost]
         public Task<IActionResult> Post(CreateOrderCommand request)
-                    => RequestHandler.HandleCommand(request, _orderCommandService.Handle, _logger);
+            => RequestHandler.HandleCommand(request, _orderCommandService.Handle, _logger);
+
+        [Route("athome")]
+        [HttpPost]
+        public Task<IActionResult> Post(AddCoffeAtHomeCommand request)
+            => RequestHandler.HandleCommand(request, _orderCommandService.Handle, _logger);
+
+        [Route("todrink")]
+        [HttpPost]
+        public Task<IActionResult> Post(AddCoffeToDrinkCommand request)
+            => RequestHandler.HandleCommand(request, _orderCommandService.Handle, _logger);
+
+        [Route("done/home")]
+        [HttpPost]
+        public Task<IActionResult> Post(CoffeAtHomeOrderDoneCommand request)
+            => RequestHandler.HandleCommand(request, _orderCommandService.Handle, _logger);
+
+        [Route("done/drink")]
+        [HttpPost]
+        public Task<IActionResult> Post(OrderToDrinkDoneCommand request)
+            => RequestHandler.HandleCommand(request, _orderCommandService.Handle, _logger);
+
+        [Route("kichen")]
+        [HttpPost]
+        public Task<IActionResult> Post(KichenReceiveDrinkOrderCommand request)
+            => RequestHandler.HandleCommand(request, _orderCommandService.Handle, _logger);
+
+        [Route("stock")]
+        [HttpPost]
+        public Task<IActionResult> Post(StockReceiveCoffeAtHomeCommand request)
+            => RequestHandler.HandleCommand(request, _orderCommandService.Handle, _logger);
     }
 }
