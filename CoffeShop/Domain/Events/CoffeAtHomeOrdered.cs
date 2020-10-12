@@ -5,13 +5,13 @@ using System.Text;
 
 namespace Domain.Events
 {
-    public class CoffeAtHomeOrdered : DomainEvent
+    public class CoffeCupcakeOrderOrdered : DomainEvent
     {
-        public CoffeAtHome CoffeAtHome { get; set; }
+        public CoffeCupcakeOrder CoffeCupcakeOrder { get; set; }
 
-        public CoffeAtHomeOrdered(CoffeAtHome coffeAtHome)
+        public CoffeCupcakeOrderOrdered(CoffeCupcakeOrder CoffeCupcakeOrder)
         {
-            CoffeAtHome = coffeAtHome;
+            CoffeCupcakeOrder = CoffeCupcakeOrder;
         }
     }
 }

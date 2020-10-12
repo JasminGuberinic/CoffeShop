@@ -18,81 +18,71 @@ namespace Application
 
         public async Task Handle(object command)
         {
-            if (command is CreateOrderCommand)
+            switch(command)
             {
-                var order = await HandleCreate((CreateOrderCommand)command);
-            }
-
-            if (command is AddCoffeToDrinkCommand)
-            {
-               HandleCommand((AddCoffeToDrinkCommand)command);
-            }
-
-            if (command is AddCoffeAtHomeCommand)
-            {
-               HandleCommand((AddCoffeAtHomeCommand)command);
-            }
-
-            if (command is StockReceiveCoffeAtHomeCommand)
-            {
-                HandleCommand((StockReceiveCoffeAtHomeCommand)command);
-            }
-
-            if (command is KichenReceiveDrinkOrderCommand)
-            {
-                HandleCommand((KichenReceiveDrinkOrderCommand)command);
-            }
-
-            if (command is OrderToDrinkDoneCommand)
-            {
-                HandleCommand((OrderToDrinkDoneCommand)command);
-            }
-
-            if (command is CoffeAtHomeOrderDoneCommand)
-            {
-                HandleCommand((CoffeAtHomeOrderDoneCommand)command);
+                case CreateOrderCommand e:
+                    await HandleCreate((CreateOrderCommand)command);
+                    break;
+                case AddCoffeToDrinkOrderCommand e:
+                    await HandleCommand((AddCoffeToDrinkOrderCommand)command);
+                    break;
+                case AddCoffeCupcakeOrderCommand e:
+                    await HandleCommand((AddCoffeCupcakeOrderCommand)command);
+                    break;
+                case StockReceivedCoffeCupcakeOrderCommand e:
+                    await HandleCommand((StockReceivedCoffeCupcakeOrderCommand)command);
+                    break;
+                case KichenReceivedDrinkOrderCommand e:
+                    await HandleCommand((KichenReceivedDrinkOrderCommand)command);
+                    break;
+                case OrderForDrinkDoneCommand e:
+                    await HandleCommand((OrderForDrinkDoneCommand)command);
+                    break;
+                case CoffeCupcakeOrderDoneCommand e:
+                    await HandleCommand((CoffeCupcakeOrderDoneCommand)command);
+                    break;
             }
         }
 
-        private async Task HandleCommand(CoffeAtHomeOrderDoneCommand command)
+        private async Task HandleCommand(CoffeCupcakeOrderDoneCommand command)
         {
             var oreder = orederRepo.LoadAsync(command.OrderId.ToString());
-            oreder.CoffeAtHomeDone(command.Id);
+            oreder.CoffeCupcakeOrderDone(command.Id);
             await orederRepo.SaveAsync(oreder);
         }
 
-        private async Task HandleCommand(OrderToDrinkDoneCommand command)
+        private async Task HandleCommand(OrderForDrinkDoneCommand command)
         {
             var oreder = orederRepo.LoadAsync(command.OrderId.ToString());
             oreder.OrderToDrinkDone(command.Id);
             await orederRepo.SaveAsync(oreder);
         }
 
-        private async Task HandleCommand(KichenReceiveDrinkOrderCommand command)
+        private async Task HandleCommand(KichenReceivedDrinkOrderCommand command)
         {
             var oreder = orederRepo.LoadAsync(command.OrderId.ToString());
             oreder.KichenReceiveDrinkOrder(command.Id);
             await orederRepo.SaveAsync(oreder);
         }
 
-        private async Task HandleCommand(StockReceiveCoffeAtHomeCommand command)
+        private async Task HandleCommand(StockReceivedCoffeCupcakeOrderCommand command)
         {
             var oreder = orederRepo.LoadAsync(command.OrderId.ToString());
-            oreder.SetStockReceivedCoffeAtHome(command.Id);
+            oreder.SetStockReceivedCoffeCupcakeOrder(command.Id);
             await orederRepo.SaveAsync(oreder);
         }
 
-        private async Task HandleCommand(AddCoffeAtHomeCommand command)
+        private async Task HandleCommand(AddCoffeCupcakeOrderCommand command)
         {
             var oreder = orederRepo.LoadAsync(command.Id.ToString());
-            oreder.AddCoffeAtHomeOrder(command.CoffeToGo);
+            oreder.AddCoffeCupcakeOrderOrder(command.CoffeToGo);
             await orederRepo.SaveAsync(oreder);
         }
 
-        private async Task HandleCommand(AddCoffeToDrinkCommand command)
+        private async Task HandleCommand(AddCoffeToDrinkOrderCommand command)
         {
             var oreder = orederRepo.LoadAsync(command.Id.ToString());
-            oreder.AddCoffeToDrinkOrder(command.CoffeToDrink);
+            oreder.AddCoffeToDrinkOrder(command.CoffeToDrinkOrder);
             await orederRepo.SaveAsync(oreder);
         }
 

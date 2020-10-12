@@ -5,10 +5,10 @@ using System.Text;
 
 namespace Application.Command
 {
-    public class AddCoffeToDrinkCommand
+    public class AddCoffeToDrinkOrderCommand
     {
         public Guid OrderId { get; set; }
         public Guid Id { get; set; }
-        public CoffeToDrink CoffeToDrink { get; set; }
+        public CoffeToDrinkOrder CoffeToDrinkOrder { get; set; }
     }
 }

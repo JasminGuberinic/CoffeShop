@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Application.Command
 {
-    public class OrderToDrinkDoneCommand
+    public class OrderForDrinkDoneCommand
     {
         public Guid OrderId { get; set; }
         public Guid Id { get; set; }

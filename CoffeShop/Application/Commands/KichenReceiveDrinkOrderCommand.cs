@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Application.Command
 {
-    public class KichenReceiveDrinkOrderCommand
+    public class KichenReceivedDrinkOrderCommand
     {
         public Guid OrderId { get; set; }
         public Guid Id { get; set; }

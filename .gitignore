@@ -16,3 +16,5 @@
 /CoffeShop/infrastructure/bin/Debug/netcoreapp3.1
 /CoffeShop/infrastructure/obj
 /CoffeShop/CoffeShopTests/bin/Debug/netcoreapp3.1
+/CoffeShop/Migrations/obj
+/CoffeShop/Migrations/bin/Debug/netcoreapp3.1

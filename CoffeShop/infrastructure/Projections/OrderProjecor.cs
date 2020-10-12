@@ -24,15 +24,15 @@ namespace infrastructure
                     break;
                 case CoffeToDrinkOrdered e:
                     break;
-                case CoffeAtHomeOrdered e:
+                case CoffeCupcakeOrderOrdered e:
                     break;
                 case KichenReceivedDrinkOrder e:
                     break;
-                case StockReceivedCoffeAtHomeOrder e:
+                case StockReceivedCoffeCupcakeOrderOrder e:
                     break;
                 case DrinkOrderDone e:
                     break;
-                case CoffeAtHomeDone e:
+                case CoffeCupcakeOrderDone e:
                     break;
                 default: return null;
             }

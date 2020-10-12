@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Domain.Entitys
 {
-    enum CoffeToDrinkServing
+    enum CoffeToDrinkOrderServing
     {
         Empty = 0,
         SmallCup = 1,

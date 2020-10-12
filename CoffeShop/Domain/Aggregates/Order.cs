@@ -8,9 +8,9 @@ namespace Domain
 {
     public class Order : AggregateRoot<OrderId>
     {
-        List<CoffeToDrink> CoffeToDrink { get; set; }
+        List<CoffeToDrinkOrder> CoffeToDrinkOrder { get; set; }
 
-        List<CoffeAtHome> CoffeAtHome { get; set; }
+        List<CoffeCupcakeOrder> CoffeCupcakeOrder { get; set; }
 
         bool IsOpen { get; set; }
 
@@ -38,21 +38,21 @@ namespace Domain
             }
         }
 
-        public void AddCoffeAtHomeOrder(CoffeAtHome coffeToGo)
+        public void AddCoffeCupcakeOrderOrder(CoffeCupcakeOrder coffeToGo)
         {
-            Apply(new CoffeAtHomeOrdered(coffeToGo));
+            Apply(new CoffeCupcakeOrderOrdered(coffeToGo));
         }
 
-        public void AddCoffeToDrinkOrder(CoffeToDrink coffeToDrink)
+        public void AddCoffeToDrinkOrder(CoffeToDrinkOrder CoffeToDrinkOrder)
         {
-            Apply(new CoffeToDrinkOrdered(coffeToDrink));
+            Apply(new CoffeToDrinkOrdered(CoffeToDrinkOrder));
         }
 
-        public void SetStockReceivedCoffeAtHome(Guid id)
+        public void SetStockReceivedCoffeCupcakeOrder(Guid id)
         {
             if(id == null)
                 throw new Exception();
-            Apply(new StockReceivedCoffeAtHomeOrder(id));
+            Apply(new StockReceivedCoffeCupcakeOrderOrder(id));
         }
 
         public void KichenReceiveDrinkOrder(Guid id)
@@ -69,11 +69,11 @@ namespace Domain
             Apply(new DrinkOrderDone(id));
         }
 
-        public void CoffeAtHomeDone(Guid id)
+        public void CoffeCupcakeOrderDone(Guid id)
         {
             if (id == null)
                 throw new Exception();
-            Apply(new CoffeAtHomeDone(id));
+            Apply(new CoffeCupcakeOrderDone(id));
         }
 
         protected override void When(object @event)
@@ -85,22 +85,22 @@ namespace Domain
                     IsOpen = e.IsOpen;
                     break;
                 case CoffeToDrinkOrdered e:
-                    CoffeToDrink.Add(e.coffeToDrink);
+                    CoffeToDrinkOrder.Add(e.CoffeToDrinkOrder);
                     break;
-                case CoffeAtHomeOrdered e:
-                    CoffeAtHome.Add(e.CoffeAtHome);
+                case CoffeCupcakeOrderOrdered e:
+                    CoffeCupcakeOrder.Add(e.CoffeCupcakeOrder);
                     break;
                 case KichenReceivedDrinkOrder e:
-                    CoffeToDrink.Where(cof => cof.Id.Value == e.Id).FirstOrDefault().AcquiringToDrinkCoffe = Entitys.AcquiringToDrinkCoffe.InKichen; ;
+                    CoffeToDrinkOrder.Where(cof => cof.Id.Value == e.Id).FirstOrDefault().AcquiringToDrinkCoffe = Entitys.AcquiringToDrinkCoffe.InKichen; ;
                     break;
-                case StockReceivedCoffeAtHomeOrder e:
-                    CoffeAtHome.Where(cof => cof.Id.Value == e.Id).FirstOrDefault().AcquiringStateAtHomeCoffe = Entitys.AcquiringStateAtHomeCoffe.OrderedFromStock;
+                case StockReceivedCoffeCupcakeOrderOrder e:
+                    CoffeCupcakeOrder.Where(cof => cof.Id.Value == e.Id).FirstOrDefault().AcquiringStateAtHomeCoffe = Entitys.AcquiringStateCoffeCupcake.OrderedFromStock;
                     break;
                 case DrinkOrderDone e:
-                    CoffeToDrink.Where(cof => cof.Id.Value == e.Id).FirstOrDefault().AcquiringToDrinkCoffe = Entitys.AcquiringToDrinkCoffe.Finished;
+                    CoffeToDrinkOrder.Where(cof => cof.Id.Value == e.Id).FirstOrDefault().AcquiringToDrinkCoffe = Entitys.AcquiringToDrinkCoffe.Finished;
                     break;
-                case CoffeAtHomeDone e:
-                    CoffeAtHome.Where(cof => cof.Id.Value == e.Id).FirstOrDefault().AcquiringStateAtHomeCoffe = Entitys.AcquiringStateAtHomeCoffe.InStock;
+                case CoffeCupcakeOrderDone e:
+                    CoffeCupcakeOrder.Where(cof => cof.Id.Value == e.Id).FirstOrDefault().AcquiringStateAtHomeCoffe = Entitys.AcquiringStateCoffeCupcake.InStock;
                     break;
             }
         }

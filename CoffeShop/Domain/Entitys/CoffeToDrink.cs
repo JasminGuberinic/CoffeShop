@@ -7,20 +7,20 @@ using System.Text;
 
 namespace Domain
 {
-    public class CoffeToDrink : Entity<CoffeToDrinkId>
+    public class CoffeToDrinkOrder : Entity<CoffeToDrinkOrderId>
     {
-        CoffeToDrinkId Id { get; set; }
+        CoffeToDrinkOrderId Id { get; set; }
         bool ToGo { get; set; }
-        CoffeToDrinkServing serving { get; set; }
+        CoffeToDrinkOrderServing serving { get; set; }
         bool cake { get; set; }
         Coffe coffe { get; set; }
         Price price { get; set; }
         public AcquiringToDrinkCoffe AcquiringToDrinkCoffe { get; set; }
     }
 
-    public class CoffeToDrinkId : Value<CoffeToDrinkId>
+    public class CoffeToDrinkOrderId : Value<CoffeToDrinkOrderId>
     {
-        public CoffeToDrinkId(Guid value) => Value = value;
+        public CoffeToDrinkOrderId(Guid value) => Value = value;
 
         public Guid Value { get; }
 

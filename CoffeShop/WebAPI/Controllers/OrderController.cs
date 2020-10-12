@@ -27,34 +27,34 @@ namespace WebAPI.Controllers
         public Task<IActionResult> Post(CreateOrderCommand request)
             => RequestHandler.HandleCommand(request, _orderCommandService.Handle, _logger);
 
-        [Route("athome")]
+        [Route("cupcake")]
         [HttpPost]
-        public Task<IActionResult> Post(AddCoffeAtHomeCommand request)
+        public Task<IActionResult> Post(AddCoffeCupcakeOrderCommand request)
             => RequestHandler.HandleCommand(request, _orderCommandService.Handle, _logger);
 
-        [Route("todrink")]
+        [Route("coffe")]
         [HttpPost]
-        public Task<IActionResult> Post(AddCoffeToDrinkCommand request)
+        public Task<IActionResult> Post(AddCoffeToDrinkOrderCommand request)
             => RequestHandler.HandleCommand(request, _orderCommandService.Handle, _logger);
 
-        [Route("done/home")]
+        [Route("done/cupcake")]
         [HttpPost]
-        public Task<IActionResult> Post(CoffeAtHomeOrderDoneCommand request)
+        public Task<IActionResult> Post(CoffeCupcakeOrderDoneCommand request)
             => RequestHandler.HandleCommand(request, _orderCommandService.Handle, _logger);
 
-        [Route("done/drink")]
+        [Route("done/coffe")]
         [HttpPost]
-        public Task<IActionResult> Post(OrderToDrinkDoneCommand request)
+        public Task<IActionResult> Post(OrderForDrinkDoneCommand request)
             => RequestHandler.HandleCommand(request, _orderCommandService.Handle, _logger);
 
         [Route("kichen")]
         [HttpPost]
-        public Task<IActionResult> Post(KichenReceiveDrinkOrderCommand request)
+        public Task<IActionResult> Post(KichenReceivedDrinkOrderCommand request)
             => RequestHandler.HandleCommand(request, _orderCommandService.Handle, _logger);
 
         [Route("stock")]
         [HttpPost]
-        public Task<IActionResult> Post(StockReceiveCoffeAtHomeCommand request)
+        public Task<IActionResult> Post(StockReceivedCoffeCupcakeOrderCommand request)
             => RequestHandler.HandleCommand(request, _orderCommandService.Handle, _logger);
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Domain.Entitys
 {
-    public enum AcquiringStateAtHomeCoffe
+    public enum AcquiringStateCoffeCupcake
     {
         InStock = 0,
         NotInStock = 1,

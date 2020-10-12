@@ -7,11 +7,11 @@ namespace Domain.Events
 {
     public class CoffeToDrinkOrdered : DomainEvent
     {
-        public CoffeToDrink coffeToDrink;
+        public CoffeToDrinkOrder CoffeToDrinkOrder;
 
-        public CoffeToDrinkOrdered(CoffeToDrink coffeToDrink)
+        public CoffeToDrinkOrdered(CoffeToDrinkOrder CoffeToDrinkOrder)
         {
-            this.coffeToDrink = coffeToDrink;
+            this.CoffeToDrinkOrder = CoffeToDrinkOrder;
         }
     }
 }

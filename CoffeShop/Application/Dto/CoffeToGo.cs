@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Application.Dto
 {
-    class CoffeAtHome
+    class CoffeCupcakeOrder
     {
     }
 }
