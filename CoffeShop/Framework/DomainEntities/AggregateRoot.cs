@@ -23,6 +23,16 @@ namespace Framework
             _changes.Add(@event);
         }
 
+        public void Load(int version, IEnumerable<object> history)
+        {
+            Version = version;
+
+            foreach(var e in history)
+            {
+                When(e);
+            }
+        }
+
         public IEnumerable<DomainEvent> GetChanges() => _changes.AsEnumerable();
 
         public void ClearChanges() => _changes.Clear();
